@@ -1,7 +1,7 @@
 const otpStore = {};
 
 function saveOTP(email, otp) {
-  otpStore[email] = { otp, expires: Date.now() + 5 * 60 * 1000 }; // 5 min
+  otpStore[email] = { otp, expires: Date.now() + 15 * 60 * 1000 }; // 15 min
 }
 
 function verifyOTP(email, enteredOtp) {
