@@ -1,0 +1,111 @@
+/* Reset and base */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #2a2a2a; /* Dark Gray/Black background for whole page */
+    color: #d1d5db; /* Zinc-like color for text */
+    padding: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+}
+
+/* Container style */
+.container {
+    background-color: #333; /* Slightly lighter gray for container */
+    padding: 30px 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    width: 95%;
+    max-width: 900px;
+}
+
+/* Heading */
+h1 {
+    text-align: center;
+    margin-bottom: 25px;
+    font-size: 26px;
+    color: #d1d5db; /* Zinc-like color for heading */
+}
+
+/* Label style */
+form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #d1d5db; /* Zinc-like color for labels */
+}
+
+/* Input and select field styles */
+form input[type="text"],
+form select,
+form textarea {
+    width: 100%;
+    padding: 10px 12px;
+    margin-bottom: 20px;
+    border: 1px solid #555; /* Darker border for contrast */
+    border-radius: 6px;
+    font-size: 16px;
+    background-color: #444; /* Darker background for inputs */
+    color: #d1d5db; /* Zinc-like color for text inside inputs */
+    transition: border-color 0.3s;
+}
+
+/* Focus effect on input, select and textarea */
+form input[type="text"]:focus,
+form select:focus,
+form textarea:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+/* Button style */
+button[type="submit"] {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+/* Hover effect on submit button */
+button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+/* Link style */
+a {
+    text-decoration: none;
+    font-size: 16px;
+    color: #007bff;
+    font-weight: 500;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Textarea specific styles */
+textarea {
+    min-height: 120px;
+    resize: none;
+    overflow: hidden;
+    background-color: #444; /* Darker background for textarea */
+    color: #d1d5db; /* Zinc-like color for textarea text */
+}
+
+/* Focus effect on textarea */
+textarea:focus {
+    border-color: #007bff;
+    outline: none;
+}

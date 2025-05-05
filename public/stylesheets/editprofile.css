@@ -1,0 +1,123 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #2a2a2a; /* Dark background */
+    color: #d1d5db; /* Zinc-like color for text */
+  }
+  .profile-edit-form {
+    background-color: #2e2e2e;
+    border: 1px solid #444;
+    padding: 30px;
+    border-radius: 12px;
+    max-width: 500px;
+    margin: 40px auto;
+    color: #d1d5db;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    transition: all 0.3s ease;
+  }
+  
+  .profile-image-preview {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  
+  .profile-pic {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #444;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+  }
+  
+  .profile-edit-form input[type="text"],
+  .profile-edit-form input[type="email"],
+  .profile-edit-form input[type="file"] {
+    background-color: #444;
+    border: 1px solid #555;
+    padding: 12px 14px;
+    border-radius: 6px;
+    color: #d1d5db;
+    font-size: 15px;
+    transition: all 0.2s ease-in-out;
+  }
+  
+  .profile-edit-form input:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+    background-color: #3a3a3a;
+  }
+  
+  .profile-edit-form button {
+    padding: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  .profile-edit-form button:hover {
+    background-color: #0056b3;
+    transform: translateY(-1px);
+  }
+  
+  .profile-edit-form button:active {
+    transform: translateY(1px);
+  }
+  
+  .file-upload-label {
+    display: inline-block;
+    background-color: #444;
+    padding: 12px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    color: #d1d5db;
+    font-weight: bold;
+    text-align: center;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    text-transform: uppercase;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .file-upload-label:hover {
+    background-color: #333;
+    transform: translateY(-1px);
+  }
+  
+  .file-upload-label input[type="file"] {
+    display: none; /* Hide default file input */
+  }
+  
+  .file-upload-label span {
+    color: #fff;
+    font-size: 14px;
+  }
+  
+  /* Add hover effects to the file upload button */
+  .file-upload-label:hover span {
+    color: #fff;
+  }
+  
+  @media (max-width: 600px) {
+    .profile-edit-form {
+      padding: 20px;
+      width: 90%;
+      margin: 20px auto;
+    }
+  }
+  

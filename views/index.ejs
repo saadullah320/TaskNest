@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Todo List</title>
+  <link rel="stylesheet" href="/stylesheets/Todo.css">
+  <script src="/javascripts/calculatetime.js" defer></script>
+</head>
+<body>
+  <div class="container">
+    <a href="/todolist/logout" id="logout"  onclick="return confirm('Are you sure you want to Logout?');">Logout</a>
+    <div class="top-bar">
+      <div class="user-profile">
+        <% if (user.profileImage && user.profileImage.data) { %>
+          <img 
+            src="data:<%= user.profileImage.contentType %>;base64,<%= user.profileImage.data.toString('base64') %>" 
+            alt="Profile Picture" 
+            class="profile-pic"
+          />
+        <% } else { %>
+          <img src="/images/default-profile.jpg" alt="Default Picture" class="profile-pic" />
+        <% } %>
+        
+        <div class="user-info">
+          <h2>Welcome, <%= user.name %></h2>
+          <p>Email: <%= user.email %></p>
+          <a href="/todolist/profile">edit profile</a>
+          
+        </div>
+      </div>
+      <h1>TaskNest</h1>
+    </div>
+ 
+    <div class="filter-form-wrapper">
+      <div>
+        <a href="/todolist/addtask" class="btn btn-add-task">+ Add Task</a>
+      </div>
+      <div>
+      <form action="/todolist" method="GET" class="filter-form">
+        <select name="selectFilter">
+          <option value="">Show All</option>
+          <optgroup label="Filter by Status">
+            <option value="Pending">Pending</option>
+            <option value="In Progress">In Progress</option>
+            <option value="Completed">Completed</option>
+          </optgroup>
+          <optgroup label="Filter by Priority">
+            <option value="Low">Low</option>
+            <option value="Medium">Medium</option>
+            <option value="High">High</option>
+          </optgroup>
+          <optgroup label="Filter by Duration">
+            <option value="Less">Less</option>
+            <option value="More">More</option>
+          </optgroup>
+        </select>
+        <button type="submit">Apply Filter</button>
+      </form>
+      </div>
+    </div>  
+    <hr
+    <ul>
+        <% if (tasks.length === 0) { %>
+          <li>No tasks available.</li>
+        <% } else { %>
+          <% tasks.forEach(task => { %>
+            <li class="task-info">
+              <!-- Left side: Title and Description -->
+              <div class="task-card-left">
+                <strong><%= task.title %></strong>
+                <p class="task-description"><%= task.description %></p>
+              </div>
+      
+              <!-- Right side: Buttons and Task Info -->
+                <div class="task-card-right">
+                    <!-- Delete and Edit buttons -->
+                    <form action="/todolist/deletetask" method="POST" style="display:inline;" onsubmit="return confirm('Are you sure you want to delete this task?');">
+                    <input type="hidden" name="taskId" value="<%= task._id %>">
+                    <button type="submit" class="delete">Delete</button>
+                    </form>
+                    <form action="/todolist/<%= task._id %>/edittask" method="GET" style="display:inline;">
+                    <button type="submit" class="edit">Edit</button>
+                    </form>
+                </div>  
+      
+                <!-- Duration, Status, and Priority in sequence -->
+                <div class="task-details">
+                  <p id="t-d"><strong>Duration:</strong> <%= task.durationforuser %></p> |
+                  <p id="t-d" class="status status--<%= task.status.replace(/\s+/g, '-').toLowerCase() %>"><strong>Status:</strong> <%= task.status %></p> |
+                  <p id="t-d" class="priority priority--<%= task.priority.toLowerCase() %>" ><strong>Priority:</strong> <%= task.priority %></p> |
+                </div>
+            </li>
+          <% }) %>
+        <% } %>
+      </ul>      
+  </div>
+
+  <h4><%- include('partials/footer') %></h4>
+</body>
+</html>

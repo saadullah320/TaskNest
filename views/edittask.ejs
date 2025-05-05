@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Edit Task</title>
+  <link rel="stylesheet" href="/stylesheets/editpage.css">
+  <script src="/javascripts/calculatetime.js" defer></script>
+</head>
+<body>
+  <div class="container">
+
+    <h1>Task Manager</h1>
+    <% if(task === null) { %>
+      <form action="/todolist/addtask" method="POST" id="task-form">
+        <input type="text" name="title" placeholder="Task Title" required>
+        <input type="text" name="description" placeholder="details..." required>
+        <input type="text" name="durationforuser" id="duration-user" placeholder="Duration e.g 60 minutes, 1 day etc." required>
+        <input type="hidden" id="duration" name="duration">
+        <select name="priority">
+          <option value="Low">Priority</option>
+          <option value="Low">Low</option>
+          <option value="Medium">Medium</option>
+          <option value="High">High</option>
+        </select>
+        <select name="status"> Status
+          <option value="Pending">Status</option>
+          <option value="Pending">Pending</option>
+          <option value="In Progress">In Progress</option>
+          <option value="Completed">Completed</option>
+        </select>
+        <button type="submit">Add Task</button>
+        <p>  
+          <% if (addtaskerrors.length > 0) { %>
+              <div style="color: red;"><%= addtaskerrors %></div>
+              <% } %>
+          </p>
+      </form>
+      <% } else { %>
+        <h1>Edit Task</h1>
+    <form action="/todolist/update/task" method="POST">
+      <label for="title">Title</label>
+      <input type="text" id="title" name="title" value="<%= task.title %>" required>
+      <label for="description">Details</label>
+      <textarea name="description" id="description" placeholder="details..." required><%= task.description %></textarea>
+      <label for="duration-user">Duration</label>
+      <input type="text" id="duration-user" name="durationforuser" value="<%= task.durationforuser %>" placeholder="e.g. 1h 30m or 90" required>
+      <input type="hidden" id="duration" name="duration">
+      <label for="priority">Priority</label>
+      <select id="priority" name="priority">
+        <option value="Low" <%= task.priority === 'Low' ? 'selected' : '' %>>Low</option>
+        <option value="Medium" <%= task.priority === 'Medium' ? 'selected' : '' %>>Medium</option>
+        <option value="High" <%= task.priority === 'High' ? 'selected' : '' %>>High</option>
+      </select>
+
+      <label for="status">Status</label>
+      <select id="status" name="status">
+        <option value="Pending" <%= task.status === 'Pending' ? 'selected' : '' %>>Pending</option>
+        <option value="In Progress" <%= task.status === 'In Progress' ? 'selected' : '' %>>In Progress</option>
+        <option value="Completed" <%= task.status === 'Completed' ? 'selected' : '' %>>Completed</option>
+      </select>
+      <input type="hidden" name="taskId" value="<%= task._id %>">
+      <button type="submit">Save Changes</button>
+      <a href="/todolist" style="margin-left: 10px;">Cancel</a>
+      <p>  
+        <% if (addtaskerrors.length > 0) { %>
+            <div style="color: red;"><%= addtaskerrors %></div>
+            <% } %>
+        </p>
+    </form>
+    <% } %>
+  </div>
+
+</body>
+</html>

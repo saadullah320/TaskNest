@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/stylesheets/editprofile.css">
+    <script src="/javascripts/livepreview.js" defer></script>
+</head>
+<body>
+    <form action="/todolist/profile/edit" method="POST" enctype="multipart/form-data" class="profile-edit-form">
+        <div class="profile-image-preview">
+          <% if (user.profileImage && user.profileImage.data) { %>
+            <img 
+              src="data:<%= user.profileImage.contentType %>;base64,<%= user.profileImage.data.toString('base64') %>" 
+              alt="Profile Picture" 
+              class="profile-pic"
+              id="profile-image-preview"
+            />
+          <% } else { %>
+            <img 
+            src="/images/default-profile.jpg"
+            alt="Profile Picture" 
+            class="profile-pic"
+             id="profile-image-preview"
+             />
+          <% } %>
+        </div>
+        <input type="text" name="name" value="<%= user.name %>" required placeholder="Enter your name">
+        <input type="email" name="email" value="<%= user.email %>" required placeholder="Enter your email">
+        
+        <!-- File input for the profile image with custom styling -->
+        <label for="profile-image-input" class="file-upload-label">
+          <span>Upload Profile Picture</span>
+          <input type="file" name="profileImage" accept="image/*" id="profile-image-input">
+        </label>
+        
+        <button type="submit">Update Profile</button>
+      </form>
+      
+
+</body>
+</html>

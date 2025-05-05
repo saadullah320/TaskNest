@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+   <link rel="stylesheet" href="/stylesheets/login-page.css">
+    <script src="/javascripts/check-username.js" defer></script>
+</head>
+<body>
+    <h1 id="main-heading" class=" .gradient-text ">Welcome to TaskNest</h1>
+    <div id="login-form-container">
+        <form action="/users/login" method="POST">
+            <h2>Login</h2>
+            <p>Already have an account? Login here:</p>
+            <input type="text" name="userdata" placeholder="Enter your username" required>
+            <input type="password" name="password" placeholder="Enter your password" required>
+            <input type="submit" value="Login">
+            <p>  
+            <% if (loginerrors.length > 0) { %>
+                <div style="color: red;"><%= loginerrors %></div>
+                <% } %>
+            </p>
+        </form>
+    </div>
+    <div id="register-form-container">
+        <form  action="/users/register" method="POST" class="register-form">
+            <h2>Register</h2>
+            <p>Create new account:</p>
+            <input type="text" name="name" placeholder="Enter your name" required>
+            <div class="input-container">
+                <input type="text" name="username" id="username" placeholder="Enter your username" required>
+                <span id="username-status"  data-tooltip=""></span>
+            </div>
+            <input type="email" name="email" placeholder="Enter your email" required>
+            <input type="password" name="password" placeholder="Enter your password" required>
+            <input type="submit" value="Submit">
+            <p>  
+                <% if (regerrors.length > 0) { %>
+                    <div style="color: red;"><%= regerrors %></div>
+                <% } %>
+                </p>
+                <p>  
+                    <% if (success.length > 0) { %>
+                        <div style="color: rgb(0, 255, 8);"><%= success %></div>
+                    <% } %>
+                </p>
+        </form>
+    </div>
+</body>
+</html>

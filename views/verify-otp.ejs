@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Verify OTP</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/stylesheets/opt.css">
+</head>
+<body>
+  <div class="otp-container">
+    <p>OTP has been sent to your email <%= email%> </p>
+    <h2>Please enter the OTP:</h2>
+    <form id="otpForm" >
+      <input type="hidden" id="email" name="email" value="<%= email %>">
+      <div class="otp-input">
+        <input type="text" maxlength="1" required>
+        <input type="text" maxlength="1" required>
+        <input type="text" maxlength="1" required>
+        <input type="text" maxlength="1" required>
+        <input type="text" maxlength="1" required>
+        <input type="text" maxlength="1" required>
+      </div>
+      <button type="submit">Verify</button>
+      <p>
+        Didn't receive the OTP?
+        <a href="#" id="resendLink"> Resend OTP
+        </a>
+        <div class="" id="countdown-div">
+       <p id="countdown-text" hidden> wait before retrying <p id="countdown" hidden>60</p></p>
+      </div>
+      </p>
+      <p id="message"></p>
+      <div class="message" id="message"></div>
+    </form>
+  </div>
+  <script src="/javascripts/opt.js" defer></script>
+</body>
+</html>
